@@ -70,4 +70,16 @@ public class UserController {
         }
         return responseEntity;
     }
+    @PutMapping("/track/updateTrack/{userId}")
+    public ResponseEntity<?> updateTrackForUser(@PathVariable String userId,@RequestBody Track track) throws UserNotFoundException {
+        ResponseEntity responseEntity = null;
+        try{
+            responseEntity = new ResponseEntity<>(userService.updateTrackForUser(userId,track), HttpStatus.CREATED);
+        }catch (UserNotFoundException e){
+            throw new UserNotFoundException();
+        }catch (Exception e){
+            responseEntity = new ResponseEntity<>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return responseEntity;
+    }
 }

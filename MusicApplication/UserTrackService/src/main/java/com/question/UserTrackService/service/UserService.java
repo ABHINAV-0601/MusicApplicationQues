@@ -13,4 +13,5 @@ public interface UserService {
     public User addTrackForUser(String userId, Track track) throws UserNotFoundException;
     public User deleteTrackFromUser(String userId,int trackId) throws UserNotFoundException, TrackNotFoundException;
     List<Track> getTrackForUser(String userId) throws UserNotFoundException;
+    User updateTrackForUser(String userId,Track track) throws UserNotFoundException;
 }
